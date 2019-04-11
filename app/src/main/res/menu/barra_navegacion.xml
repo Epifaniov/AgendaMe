@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_agenda"
+        android:icon="@drawable/ic_event_calendario_barra"
+        android:title="@string/agenda_nav"/>
+
+    <item
+        android:id="@+id/nav_perfil"
+        android:icon="@drawable/ic_account_perfil_barra"
+        android:title="@string/perfil_nav"/>
+
+
+    <item
+        android:id="@+id/nav_amigos"
+        android:icon="@drawable/ic_people_amigos_barra"
+        android:title="@string/amigos_nav"/>
+</menu>

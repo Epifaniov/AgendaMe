@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:elevation="8dp"
+        app:elevation="8dp"
+        android:background="@drawable/perfil_background">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:id="@+id/profile_image"
+            android:src="@drawable/foto_perfil_sin_marco"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nombre_perfil_perfil"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:layout_marginTop="6dp"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/editar_perfil"
+            android:layout_width="112dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:layout_gravity="center"
+            android:layout_marginTop="13dp"
+            android:textAllCaps="false"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:background="@drawable/boton_editar_perfil"
+            android:text="@string/editar_perfil"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/segundo_bloque_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <ImageView
+                    android:id="@+id/etiqueta_amigos"
+                    android:layout_width="120dp"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="-30dp"
+                    android:background="@drawable/etiqueta_amigos" />
+
+                <TextView
+                    android:id="@+id/numero_amigos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/etiqueta_amigos"
+                    android:layout_alignLeft="@id/etiqueta_amigos"
+                    android:layout_marginLeft="35dp"
+                    android:text="@string/numero_amigos"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/etiqueta_amigos"
+                    android:layout_alignBottom="@id/etiqueta_amigos"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginBottom="35dp"
+                    android:text="@string/amigos"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/etiqueta_citas"
+                    android:layout_width="120dp"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="-8dp"
+                    android:layout_marginTop="-30dp"
+                    android:layout_toRightOf="@id/etiqueta_amigos"
+                    android:background="@drawable/etiqueta_citas" />
+
+                <TextView
+                    android:id="@+id/numero_citas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/etiqueta_citas"
+                    android:layout_alignLeft="@id/etiqueta_citas"
+                    android:layout_marginLeft="50dp"
+                    android:text="@string/numero_citas"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/etiqueta_citas"
+                    android:layout_alignBottom="@id/etiqueta_citas"
+                    android:layout_marginLeft="38dp"
+                    android:layout_marginBottom="35dp"
+                    android:text="@string/citas"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/icono_email_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/ic_email_black_24dp"
+            android:layout_below="@id/segundo_bloque_perfil" />
+
+        <TextView
+            android:id="@+id/email_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emailLogin"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:layout_marginTop="35dp"
+            android:paddingLeft="10dp"
+            android:layout_toRightOf="@id/icono_email_perfil"
+            android:layout_below="@id/segundo_bloque_perfil"/>
+
+        <TextView
+            android:id="@+id/correo_electronico_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/correo_electronico_perfil"
+            android:textSize="25sp"
+            android:textColor="@android:color/black"
+            android:paddingLeft="10dp"
+            android:layout_toRightOf="@id/icono_email_perfil"
+            android:layout_below="@id/email_perfil"/>
+
+        <ImageView
+            android:id="@+id/icono_telefono_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/ic_local_phone_black_24dp"
+            android:layout_below="@id/correo_electronico_perfil"/>
+
+        <TextView
+            android:id="@+id/telefono_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/telefono"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:layout_marginTop="35dp"
+            android:paddingLeft="10dp"
+            android:layout_toRightOf="@id/icono_telefono_perfil"
+            android:layout_below="@id/correo_electronico_perfil"/>
+
+        <TextView
+            android:id="@+id/numero_telefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/numero_telefono_perfil"
+            android:textSize="25sp"
+            android:textColor="@android:color/black"
+            android:paddingLeft="10dp"
+            android:layout_toRightOf="@id/icono_telefono_perfil"
+            android:layout_below="@id/telefono_perfil"/>
+
+        <Button
+            android:id="@+id/solicitudes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="115dp"
+            android:layout_marginRight="115dp"
+            android:background="@drawable/boton_perfil"
+            android:text="@string/solicitudes_amistad"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:layout_below="@id/numero_telefono"/>
+    </RelativeLayout>
+</LinearLayout>

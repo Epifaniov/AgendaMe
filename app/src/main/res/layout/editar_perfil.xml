@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditarPerfil"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:layout_marginRight="12dp"
+            android:text="@string/guardar"
+            android:layout_gravity="end"/>
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/bloque_imagen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imagen"
+            android:src="@drawable/foto_perfil_sin_marco"
+            android:layout_width="94dp"
+            android:layout_height="94dp"
+            app:civ_border_width="1dp"
+            android:layout_centerInParent="true"
+            app:civ_border_color="@color/colorPrimary"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cambiar_foto"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_alignEnd="@id/imagen"
+            android:layout_alignBottom="@id/imagen"
+            android:background="@drawable/litte_add"
+            android:elevation="4dp"
+            android:src="@drawable/ic_agregar"/>
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/nombreReal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:color="@color/colorPrimaryLight"
+        android:drawableLeft="@drawable/ic_account_circle_black_24dp"
+        android:drawablePadding="16dp"
+        android:hint="@string/nombreReal"
+        android:inputType="text"
+        android:paddingLeft="18dp"
+        android:paddingBottom="17dp"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/nombreDeUsuarioPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:color="@color/colorPrimaryLight"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
+        android:drawablePadding="16dp"
+        android:hint="@string/emailLogin"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="18dp"
+        android:paddingBottom="17dp"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/telefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:color="@color/colorPrimaryLight"
+        android:drawableLeft="@drawable/ic_local_phone_black_24dp"
+        android:drawablePadding="16dp"
+        android:hint="@string/telefono"
+        android:inputType="text"
+        android:paddingLeft="18dp"
+        android:paddingBottom="17dp"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/contraseñaActual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:color="@color/colorPrimaryLight"
+        android:drawableStart="@drawable/ic_lock_black_24dp"
+        android:drawablePadding="16dp"
+        android:hint="@string/actual_password"
+        android:inputType="textPassword"
+        android:paddingStart="18dp"
+        android:paddingBottom="17dp"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/contraseñaPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:color="@color/colorPrimaryLight"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawablePadding="16dp"
+        android:hint="@string/new_password"
+        android:inputType="textPassword"
+        android:paddingLeft="18dp"
+        android:paddingBottom="17dp"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/confirmarContraseñaPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:color="@color/colorPrimaryLight"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawablePadding="16dp"
+        android:hint="@string/confirmarContraseñaRegistro"
+        android:inputType="textPassword"
+        android:paddingLeft="18dp"
+        android:paddingBottom="17dp"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="20sp" />
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/lista_solicitudes">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/list_imagen"
+        android:layout_margin="10dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/list_texto"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="demo"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="10"
+        android:textSize="14sp" />
+
+    <ImageButton
+        android:id="@+id/aceptar_solicitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:src="@drawable/ic_aceptar_solicitud"/>
+
+    <ImageButton
+        android:id="@+id/eliminar_solicitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginEnd="20dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/white"
+        android:src="@drawable/ic_eliminar_solicitud"/>
+
+</LinearLayout>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InfoEventoFijo"
+    android:orientation="vertical"
+    android:background="#ff039be5">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_borrar_evento"
+            android:layout_marginRight="12dp"
+            android:text="@string/guardar"
+            android:layout_gravity="end"/>
+
+        <ImageView
+            android:id="@+id/editar_evento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_editar_evento"
+            android:layout_marginRight="12dp"
+            android:text="@string/guardar"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_gravity="end"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginStart="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:text="@string/nombre_evento_info_fijo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:text="@string/fecha_evento_info"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/invitados"
+            android:layout_marginTop="15dp"
+            android:drawablePadding="10dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:drawableStart="@drawable/ic_invitados"/>
+
+        <LinearLayout
+            android:id="@+id/gruo_invitados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/invitado_1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/invitado_1" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/invitado_2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/invitado_2" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/aviso_notificaciones"
+            android:layout_marginTop="15dp"
+            android:drawablePadding="10dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:drawableStart="@drawable/ic_notificaciones_activas"/>
+
+    </LinearLayout>
+
+</LinearLayout>

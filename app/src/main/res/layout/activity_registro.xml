@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clipToPadding="false"
+    tools:context=".Registro">
+    
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:layout_marginRight="12dp"
+            android:text="@string/guardar"
+            android:layout_gravity="end"/>
+    </android.support.v7.widget.Toolbar>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/perfilFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_gravity="center"
+        android:src="@drawable/agregar_foto_perfil" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/fotoPerfil"
+        android:textColor="#fff31b70"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/nombreReal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:color="#fff41a71"
+        android:drawableLeft="@drawable/ic_account_circle_black_24dp"
+        android:drawablePadding="16dp"
+        android:hint="@string/nombreReal"
+        android:inputType="text"
+        android:paddingLeft="18dp"
+        android:paddingBottom="17dp"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/nombreDeUsuarioRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:color="#fff41a71"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
+        android:drawablePadding="16dp"
+        android:hint="@string/emailLogin"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="18dp"
+        android:paddingBottom="17dp"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/telefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:color="#fff41a71"
+        android:drawableLeft="@drawable/ic_local_phone_black_24dp"
+        android:drawablePadding="16dp"
+        android:hint="@string/telefono"
+        android:inputType="text"
+        android:paddingLeft="18dp"
+        android:paddingBottom="17dp"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/contraseñaRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:color="#fff41a71"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawablePadding="16dp"
+        android:hint="@string/passwordLogin"
+        android:inputType="textPassword"
+        android:paddingLeft="18dp"
+        android:paddingBottom="17dp"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/confirmarContraseñaRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:color="#fff41a71"
+        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawablePadding="16dp"
+        android:hint="@string/confirmarContraseñaRegistro"
+        android:inputType="textPassword"
+        android:paddingLeft="18dp"
+        android:paddingBottom="17dp"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="20sp" />
+    <!--
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars" />
+    -->
+</LinearLayout>

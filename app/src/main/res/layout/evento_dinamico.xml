@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EventoDinamico">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:layout_marginRight="12dp"
+            android:text="@string/guardar"
+            android:layout_gravity="end"/>
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="@string/fecha"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="23dp"
+        android:textColor="@color/colorPrimaryLight"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="@string/fecha_dummy"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/colorPrimary"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="18dp"
+        android:textSize="34sp"
+        android:hint="@string/nombre_evento"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/invitaciones"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/ic_amigos_evento"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/agregar_amigos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="mini"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_agregar"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="18dp"
+        android:textColor="@color/colorPrimaryLight"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:text="@string/agregar_ubicacion"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="18dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/duracion_evento"
+            android:textSize="16sp"
+            android:drawablePadding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:drawableStart="@drawable/ic_duracion_evento" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/duracion_dummy"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginStart="40dp"/>
+
+    </LinearLayout>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recibir notificaciones"
+        android:textSize="16sp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorPrimary"
+        android:buttonTint="@color/colorPrimary"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/rango_tiempo"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/ic_rango_tiempo"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="22dp">
+
+        <TextView
+            android:id="@+id/comienzo_rango"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/comienzo_rango"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimaryLight"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:text="@string/hora_inicio_dummy"
+            android:textColor="@color/colorPrimary"
+            android:layout_below="@id/comienzo_rango"/>
+
+        <TextView
+            android:id="@+id/fin_rango"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="@string/fin_rango"
+            android:layout_marginStart="200dp"
+            android:textColor="@color/colorPrimaryLight"
+            android:layout_toEndOf="@id/comienzo_rango"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:text="@string/hora_fin_dummy"
+            android:textColor="@color/colorPrimary"
+            android:layout_below="@id/comienzo_rango"
+            android:layout_alignStart="@id/fin_rango"/>
+
+    </RelativeLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="18dp"
+        android:textColor="@color/colorPrimaryLight"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:text="@string/agregar_nota"/>
+
+</LinearLayout>

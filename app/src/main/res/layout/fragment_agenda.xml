@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/agenda"
+            android:layout_marginLeft="12dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="22sp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:layout_below="@id/toolbar">
+
+        <ListView
+            android:id="@+id/my_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:dividerHeight="0dp"/>
+
+        <LinearLayout
+            android:id="@+id/evento_fijo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:layout_above="@id/evento_dinamico"
+            android:layout_alignRight="@id/evento_dinamico"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/texto_evento_fijo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/evento_fijo"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginRight="7dp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/aspecto_texto_evento_fijo"/>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_evento_fijo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@color/colorPrimary"
+                android:clickable="true"
+                app:fabSize="mini"
+                android:src="@drawable/ic_evento_fijo"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/evento_dinamico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:layout_above="@id/agregar_evento"
+            android:layout_alignRight="@id/agregar_evento"
+            android:layout_marginEnd="8dp">
+
+            <TextView
+                android:id="@+id/texto_evento_dinamico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/evento_dinamico"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_marginRight="7dp"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/aspecto_texto_evento_dinamico"/>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_evento_dinamico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@color/colorPrimary"
+                android:clickable="true"
+                app:fabSize="mini"
+                android:src="@drawable/ic_evento_dinamico"/>
+
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/agregar_evento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/colorPrimary"
+            android:clickable="true"
+            android:layout_margin="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_agregar"/>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PerfilAmigo">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:background="@drawable/amigo_perfil_background"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        app:elevation="8dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imagen_perfil"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/imagen_perfil_amigo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:text="@string/nombre_perfil_amigo"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/segundo_bloque_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <ImageView
+                    android:id="@+id/etiqueta_amigos"
+                    android:layout_width="120dp"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="-30dp"
+                    android:background="@drawable/etiqueta_amigos" />
+
+                <TextView
+                    android:id="@+id/numero_amigos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/etiqueta_amigos"
+                    android:layout_alignLeft="@id/etiqueta_amigos"
+                    android:layout_marginLeft="35dp"
+                    android:text="@string/numero_amigos"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/etiqueta_amigos"
+                    android:layout_alignBottom="@id/etiqueta_amigos"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginBottom="35dp"
+                    android:text="@string/amigos"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/icono_email_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/segundo_bloque_perfil"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/ic_email_black_24dp" />
+
+        <TextView
+            android:id="@+id/email_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/segundo_bloque_perfil"
+            android:layout_marginTop="35dp"
+            android:layout_toRightOf="@id/icono_email_perfil"
+            android:paddingLeft="10dp"
+            android:text="@string/emailLogin"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/correo_electronico_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/email_perfil"
+            android:layout_toRightOf="@id/icono_email_perfil"
+            android:paddingLeft="10dp"
+            android:text="@string/correo_electronico_amigo"
+            android:textColor="@android:color/black"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/icono_telefono_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/correo_electronico_perfil"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/ic_local_phone_black_24dp" />
+
+        <TextView
+            android:id="@+id/telefono_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/correo_electronico_perfil"
+            android:layout_marginTop="35dp"
+            android:layout_toRightOf="@id/icono_telefono_perfil"
+            android:paddingLeft="10dp"
+            android:text="@string/telefono"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/numero_telefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/telefono_perfil"
+            android:layout_toRightOf="@id/icono_telefono_perfil"
+            android:paddingLeft="10dp"
+            android:text="@string/numero_telefono_amigo"
+            android:textColor="@android:color/black"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/numero_telefono"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="77dp"
+            android:layout_marginRight="100dp"
+            android:background="@drawable/boton_perfil"
+            android:text="@string/agregar_amigo"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+</LinearLayout>

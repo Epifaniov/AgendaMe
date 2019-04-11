@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!--
+    <item>
+        <shape android:shape="oval">
+           <solid android:color="@color/colorShadow"/>
+            shadow Color
+        </shape>
+    </item>
+
+    -->
+    <item>
+        <shape android:shape="oval">
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+
+            <solid android:color="#40CCCCCC" />
+
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+
+            <solid android:color="#50CCCCCC" />
+
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+
+            <solid android:color="#60CCCCCC" />
+
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+
+            <solid android:color="#70CCCCCC" />
+
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <padding
+                android:bottom="1dp"
+                android:left="1dp"
+                android:right="1dp"
+                android:top="1dp" />
+
+            <solid android:color="#80CCCCCC" />
+
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+    <!--Fondo e imagen del botón-->
+    <item
+    android:bottom="3dp">
+        <shape
+        android:shape="oval">
+
+            <solid
+            android:color="@color/colorPrimary"/>
+
+            <size
+            android:width="120dp"
+            android:height="120dp"/>
+        </shape>
+    </item>
+    <item
+    android:drawable="@drawable/ic_camera_alt_black_24dp"
+    android:bottom="26dp"
+    android:left="26dp"
+    android:right="26dp"
+    android:top="26dp"/>
+</layer-list>
