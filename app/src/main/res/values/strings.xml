@@ -45,7 +45,7 @@
     <string name="comienzo_rango">De:</string>
     <string name="fin_rango">A:</string>
     <string name="nombre_perfil_amigo">Mary Jenkins</string>
-    <string name="agregar_amigo">Agregar a agenda</string>
+    <string name="eliminar_amigo">Retirar de agenda</string>
     <string name="correo_electronico_amigo">maryjen@gmail.com</string>
     <string name="numero_telefono_amigo">+34 689 23 91 07</string>
     <string name="nombre_evento_info_fijo">Chips at least</string>

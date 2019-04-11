@@ -156,7 +156,7 @@
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/register"
+            android:id="@+id/eliminar_amigo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/numero_telefono"
@@ -164,7 +164,7 @@
             android:layout_marginTop="77dp"
             android:layout_marginRight="100dp"
             android:background="@drawable/boton_perfil"
-            android:text="@string/agregar_amigo"
+            android:text="@string/eliminar_amigo"
             android:textColor="@android:color/white"
             android:textSize="15sp" />
     </RelativeLayout>
