@@ -3,6 +3,7 @@ package com.upm.agendame;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -46,5 +47,17 @@ public class Solicitudes extends AppCompatActivity {
         ListView list = (ListView) findViewById(R.id.list_solicitudes);
         SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), aList, R.layout.lista_solicitudes, from, to);
         list.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                //NavUtils.navigateUpFromSameTask(this);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
