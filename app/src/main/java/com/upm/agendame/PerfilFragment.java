@@ -20,13 +20,23 @@ public class PerfilFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_perfil, container, false);
 
-        Button login = v.findViewById(R.id.editar_perfil);
-        login.setOnClickListener(new View.OnClickListener(){
+        Button editarPerfil = v.findViewById(R.id.editar_perfil);
+        editarPerfil.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent launcherActivityEditarRegistro = new Intent(getActivity().getApplicationContext(),
                         EditarPerfil.class);
                 startActivity(launcherActivityEditarRegistro);
+            }
+        });
+
+        Button cerrarSesion = v.findViewById(R.id.cerrar_sesion);
+        cerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent launcherActivityCerrarSesion = new Intent(getActivity().getApplicationContext(),
+                        Login.class);
+                startActivity(launcherActivityCerrarSesion);
             }
         });
 
