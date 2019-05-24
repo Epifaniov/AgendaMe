@@ -34,6 +34,7 @@
             android:src="@drawable/imagen_perfil_amigo" />
 
         <TextView
+            android:id="@+id/nombreUsr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -62,7 +63,6 @@
                     android:id="@+id/etiqueta_amigos"
                     android:layout_width="120dp"
                     android:layout_height="140dp"
-                    android:layout_marginTop="-30dp"
                     android:background="@drawable/etiqueta_amigos" />
 
                 <TextView
@@ -156,7 +156,7 @@
             android:textSize="25sp" />
 
         <Button
-            android:id="@+id/eliminar_amigo"
+            android:id="@+id/requestButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/numero_telefono"

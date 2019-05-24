@@ -15,14 +15,16 @@
         android:background="@color/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
         <TextView
+            android:id="@+id/btnUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:textColor="@color/colorAccent"
+            android:layout_gravity="end"
             android:layout_marginRight="12dp"
             android:text="@string/guardar"
-            android:layout_gravity="end"/>
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent" />
     </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
@@ -33,7 +35,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/imagen"
+            android:id="@+id/imgProfile"
             android:src="@drawable/foto_perfil_sin_marco"
             android:layout_width="94dp"
             android:layout_height="94dp"
@@ -47,8 +49,8 @@
             android:id="@+id/cambiar_foto"
             android:clickable="true"
             android:focusable="true"
-            android:layout_alignEnd="@id/imagen"
-            android:layout_alignBottom="@id/imagen"
+            android:layout_alignEnd="@id/imgProfile"
+            android:layout_alignBottom="@id/imgProfile"
             android:background="@drawable/litte_add"
             android:elevation="4dp"
             android:src="@drawable/ic_agregar"/>
@@ -75,7 +77,7 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/nombreDeUsuarioPerfil"
+        android:id="@+id/emailEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -93,7 +95,7 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/telefono"
+        android:id="@+id/telefonoEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -111,7 +113,7 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/contraseñaActual"
+        android:id="@+id/currentPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -129,7 +131,7 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/contraseñaPerfil"
+        android:id="@+id/newPass1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -147,7 +149,7 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/confirmarContraseñaPerfil"
+        android:id="@+id/newPass2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"

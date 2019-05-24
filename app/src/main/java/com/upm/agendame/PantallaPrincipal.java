@@ -9,6 +9,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 public class PantallaPrincipal extends AppCompatActivity {
@@ -22,7 +23,7 @@ public class PantallaPrincipal extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.barra_navegacion);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
-
+        Log.d("intent","Pantalla principal");
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new AgendaFragment()).commit();
 

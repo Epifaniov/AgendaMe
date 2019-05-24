@@ -6,14 +6,14 @@
     android:orientation="horizontal">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/listimage"
+        android:id="@+id/thumbnail"
         android:layout_margin="10dp"
         android:layout_width="35dp"
         android:layout_height="35dp"
         />
 
     <TextView
-        android:id="@+id/listtext"
+        android:id="@+id/nombreThumb"
         android:layout_width="wrap_content"
         android:layout_gravity="center_vertical"
         android:text="demo"

@@ -51,7 +51,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/contraseña"
+            android:id="@+id/currentPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"

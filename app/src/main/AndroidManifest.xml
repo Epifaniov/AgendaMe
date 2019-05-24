@@ -2,21 +2,28 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.upm.agendame">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:logo="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:logo="@drawable/ic_launcher"
         android:roundIcon="@drawable/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Solicitudes"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".SearchFriend"
+            android:label="@string/title_activity_search_friend"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Solicitudes" />
         <activity android:name=".EditarPerfil" />
-        <activity android:name=".InfoEventoDinamico" />
+        <activity android:name=".InfoEventoDinamicoActivity" />
         <activity android:name=".InfoEventoFijo" />
         <activity android:name=".PerfilAmigo" />
         <activity android:name=".EventoDinamico" />
-        <activity android:name=".EventoFijo" />
+        <activity android:name=".EventoFijoActivity" />
         <activity android:name=".PantallaPrincipal" />
         <activity android:name=".Registro" />
         <activity android:name=".Login">

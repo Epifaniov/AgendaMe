@@ -45,18 +45,20 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/nombreEvento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/nombre_evento_info_fijo"
             android:textColor="@color/colorAccent"
-            android:textSize="24sp"
-            android:text="@string/nombre_evento_info_fijo"/>
+            android:textSize="24sp" />
 
         <TextView
+            android:id="@+id/fechaEvento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/fecha_evento_info"
             android:textColor="@color/colorAccent"
-            android:textSize="16sp"
-            android:text="@string/fecha_evento_info"/>
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="match_parent"
