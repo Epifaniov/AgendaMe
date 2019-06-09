@@ -18,7 +18,7 @@ public class EventoDinamico extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Evento Dinámico");
     }
-
+    // qweqweqweqwewe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
