@@ -14,9 +14,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SolicitudesEventos"
+            android:label="@string/title_activity_solicitudes_eventos"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".SearchFriend"
             android:label="@string/title_activity_search_friend"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Solicitudes" />
         <activity android:name=".EditarPerfil" />
         <activity android:name=".InfoEventoDinamicoActivity" />

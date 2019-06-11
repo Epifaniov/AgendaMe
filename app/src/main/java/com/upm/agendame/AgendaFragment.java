@@ -1,8 +1,6 @@
 package com.upm.agendame;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -15,7 +13,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -72,16 +69,10 @@ public class AgendaFragment extends Fragment {
         recyclerView=(RecyclerView) v.findViewById(R.id.recy_event);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         allEvents=new ArrayList<>();
-        String ds="14/05/2019";
-        try {
-            Date fecha = new SimpleDateFormat("dd/mm/yyyy").parse(ds);
-            Log.d("LOG: ","No hay problema de parse "+fecha.toString());
-            cargarDatos(usr,fecha);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-
+        //String ds="14/05/2019";
+        Date fecha = new Date(System.currentTimeMillis());
+        Log.d("LOG: ","No hay problema de parse "+fecha.toString());
+        cargarDatos(usr,fecha);
 
 
         final FloatingActionButton fabAgregarEvento = (FloatingActionButton) v.findViewById(R.id.agregar_evento);
@@ -152,7 +143,7 @@ public class AgendaFragment extends Fragment {
 
     private void cargarDatos(Usuario usr,Date fecha){
         Log.d("LOG: ","Entrada en el método de carga "+fecha.toString());
-        DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String strDate = dateFormat.format(fecha);
         String passOK="";
         try {
@@ -243,14 +234,11 @@ public class AgendaFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
         if(requestCode == RES_COD_FIJO && resultCode == getActivity().RESULT_OK ){
-            String ds="14/05/2019";
-            try {
-                Date fecha = new SimpleDateFormat("dd/mm/yyyy").parse(ds);
-                Log.d("LOG: ","No hay problema de parse "+fecha.toString());
-                cargarDatos(usr,fecha);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            //String ds="14/05/2019";
+            SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+            Date fecha = new Date(System.currentTimeMillis());
+            Log.d("LOG: ","No hay problema de parse "+format.format(fecha));
+            cargarDatos(usr,fecha);
         }
     }
 
