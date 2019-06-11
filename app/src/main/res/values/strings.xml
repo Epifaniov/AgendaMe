@@ -58,7 +58,7 @@
     <string name="fecha_evento_info">Hoy, 5:30 &#8211; 6:30 PM</string>
     <string name="invitados">Invitados</string>
     <string name="aviso_notificaciones">Notificaciones activas</string>
-    <string name="nombre_evento_info_dinamico">"Marlon's</string>
+    <string name="nombre_evento_info_dinamico">Marlon</string>
     <string name="rango_tiempo_info">Mié 18, entre 4:30 y 6:30 PM</string>
     <string name="duracion_info">Duración: 1 hora</string>
     <string name="actual_password">Contraseña Actual</string>
