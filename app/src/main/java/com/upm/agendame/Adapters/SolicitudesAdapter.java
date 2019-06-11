@@ -1,7 +1,9 @@
 package com.upm.agendame.Adapters;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.upm.agendame.Entities.Usuario;
 import com.upm.agendame.Entities.VolleySingleton;
+import com.upm.agendame.PantallaPrincipal;
 import com.upm.agendame.R;
 
 import org.json.JSONArray;
@@ -88,6 +91,18 @@ public class SolicitudesAdapter extends RecyclerView.Adapter<SolicitudesAdapter.
                             if(response.equals("Amigo_Aceptado")){
                                 usuarios.remove(itemView.getVerticalScrollbarPosition());
                                 notifyItemRemoved(itemView.getVerticalScrollbarPosition());
+                                NotificationCompat.Builder mBuilder =
+                                        new NotificationCompat.Builder(context, PantallaPrincipal.channelId)
+                                                .setSmallIcon(R.drawable.ic_amigos_evento)
+                                                .setContentTitle("AgendaMe")
+                                                .setContentText("La lista de amigos ha sido actualizada");
+                                //builder.setContentIntent(resultPendingIntent);
+                                // Gets an instance of the NotificationManager service//
+                                NotificationManager mNotificationManager =
+                                        (NotificationManager)
+                                                context.getSystemService(Context.NOTIFICATION_SERVICE);
+                                // rather than create a new one. In this example, the notification’s ID is 001//
+                                mNotificationManager.notify(1, mBuilder.build());
                             }
                         }
                     }, new Response.ErrorListener() {
