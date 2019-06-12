@@ -61,7 +61,7 @@ public class AgendaFragment extends Fragment {
         final FloatingActionButton fabAgregarEvento = (FloatingActionButton) v.findViewById(R.id.agregar_evento);
 
         final LinearLayout mEventoFijoLayout = (LinearLayout) v.findViewById(R.id.evento_fijo);
-        final LinearLayout mEventoDinamicoLayout = (LinearLayout) v.findViewById(R.id.evento_dinamico);
+        //final LinearLayout mEventoDinamicoLayout = (LinearLayout) v.findViewById(R.id.evento_dinamico);
 
         final Animation mostrarFab = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.mostrar_fab_agenda);
         final Animation ocultarFab = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.ocultar_fab_agenda);
@@ -69,20 +69,21 @@ public class AgendaFragment extends Fragment {
         final Animation mostrarMiniFab = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.mostrar_minifab_agenda);
         final Animation ocultarMiniFab = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.ocultar_minifab_agenda);
 
-        /*
+
         FloatingActionButton floatingActionButton = (FloatingActionButton) v.findViewById(R.id.fab_evento_fijo);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mEventoFijoLayout.setVisibility(View.GONE);
-                mEventoDinamicoLayout.setVisibility(View.GONE);
+                //mEventoDinamicoLayout.setVisibility(View.GONE);
                 mEventoFijoLayout.startAnimation(ocultarMiniFab);
-                mEventoDinamicoLayout.startAnimation(ocultarMiniFab);
+                //mEventoDinamicoLayout.startAnimation(ocultarMiniFab);
                 fabAgregarEvento.startAnimation(ocultarFab);
                 Intent launcherActivityEventoFijo = new Intent(getActivity().getApplicationContext(),
                         EventoFijoActivity.class);
                 launcherActivityEventoFijo.putExtra("usr",usr);
-                startActivity(launcherActivityEventoFijo);//,RES_COD_FIJO);
+                startActivityForResult(launcherActivityEventoFijo,RES_COD_FIJO);
+                //startActivity(launcherActivityEventoFijo);//,RES_COD_FIJO);
             }
         });
 
@@ -91,37 +92,39 @@ public class AgendaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mEventoFijoLayout.setVisibility(View.GONE);
-                mEventoDinamicoLayout.setVisibility(View.GONE);
+                //mEventoDinamicoLayout.setVisibility(View.GONE);
                 mEventoFijoLayout.startAnimation(ocultarMiniFab);
-                mEventoDinamicoLayout.startAnimation(ocultarMiniFab);
+                //mEventoDinamicoLayout.startAnimation(ocultarMiniFab);
                 fabAgregarEvento.startAnimation(ocultarFab);
                 Intent launcherActivityEventoDinamico = new Intent(getActivity().getApplicationContext(),
                         EventoDinamico.class);
                 startActivity(launcherActivityEventoDinamico);
             }
-        });*/
+        });
 
         fabAgregarEvento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* if (mEventoFijoLayout.getVisibility() == View.VISIBLE &&
-                        mEventoDinamicoLayout.getVisibility() == View.VISIBLE){
+                if (mEventoFijoLayout.getVisibility() == View.VISIBLE/* &&
+                        mEventoDinamicoLayout.getVisibility() == View.VISIBLE*/){
                     mEventoFijoLayout.setVisibility(View.GONE);
-                    mEventoDinamicoLayout.setVisibility(View.GONE);
+                    //mEventoDinamicoLayout.setVisibility(View.GONE);
                     mEventoFijoLayout.startAnimation(ocultarMiniFab);
-                    mEventoDinamicoLayout.startAnimation(ocultarMiniFab);
+                    //mEventoDinamicoLayout.startAnimation(ocultarMiniFab);
                     fabAgregarEvento.startAnimation(ocultarFab);
                 } else {
                     mEventoFijoLayout.setVisibility(View.VISIBLE);
-                    mEventoDinamicoLayout.setVisibility(View.VISIBLE);
+                    //mEventoDinamicoLayout.setVisibility(View.VISIBLE);
                     mEventoFijoLayout.startAnimation(mostrarMiniFab);
-                    mEventoDinamicoLayout.startAnimation(mostrarMiniFab);
+                    //mEventoDinamicoLayout.startAnimation(mostrarMiniFab);
                     fabAgregarEvento.startAnimation(mostrarFab);
-                }*/
+                }
+                /*
                 Intent launcherActivityEventoFijo = new Intent(getActivity().getApplicationContext(),
                         EventoFijoActivity.class);
                 launcherActivityEventoFijo.putExtra("usr",usr);
                 startActivityForResult(launcherActivityEventoFijo,RES_COD_FIJO);
+                */
             }
         });
 

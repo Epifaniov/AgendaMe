@@ -35,7 +35,7 @@
     <string name="solicitudes_eventos">Invitaciones a eventos</string>
     <string name="dia_mes">17</string>
     <string name="dia_semana">Mar</string>
-    <string name="evento_fijo">Evento Fijo</string>
+    <string name="evento_fijo">Evento</string>
     <string name="evento_dinamico">Evento Dinámico</string>
     <string name="fecha">Fecha:</string>
     <string name="fecha_dummy">Viernes, 20 de febrero de 2019</string>
