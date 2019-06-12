@@ -34,13 +34,13 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class SolicitudesAdapter extends RecyclerView.Adapter<SolicitudesAdapter.SolicitudesViewHolder> {
+public class SolicitudesAmistadAdapter extends RecyclerView.Adapter<SolicitudesAmistadAdapter.SolicitudesViewHolder> {
     private ArrayList<Usuario> usuarios;
     private Context context;
     private Usuario usrO;
    // private RecyclerView recyclerView;
 
-    public SolicitudesAdapter(ArrayList<Usuario> usuarios, Context context,Usuario usrO){//,RecyclerView recyclerView){
+    public SolicitudesAmistadAdapter(ArrayList<Usuario> usuarios, Context context,Usuario usrO){//,RecyclerView recyclerView){
         this.usuarios=usuarios;
         this.context=context;
         this.usrO=usrO;
@@ -69,7 +69,7 @@ public class SolicitudesAdapter extends RecyclerView.Adapter<SolicitudesAdapter.
         CircleImageView img;
         TextView nombre;
         ImageButton accept,delete;
-        public SolicitudesViewHolder(@NonNull final View itemView) {
+        public SolicitudesViewHolder(@NonNull View itemView) {
             super(itemView);
             img=(CircleImageView) itemView.findViewById(R.id.imgReqFriend   );
             nombre=(TextView)itemView.findViewById(R.id.list_texto);
@@ -86,8 +86,8 @@ public class SolicitudesAdapter extends RecyclerView.Adapter<SolicitudesAdapter.
                         public void onResponse(String response) {
                             Log.d("SolAceptado",response);
                             if(response.equals("Amigo_Aceptado")){
-                                usuarios.remove(itemView.getVerticalScrollbarPosition());
-                                notifyItemRemoved(itemView.getVerticalScrollbarPosition());
+                                usuarios.remove(getAdapterPosition());
+                                notifyItemRemoved(getAdapterPosition());
                             }
                         }
                     }, new Response.ErrorListener() {
@@ -99,7 +99,7 @@ public class SolicitudesAdapter extends RecyclerView.Adapter<SolicitudesAdapter.
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String,String> parametros = new HashMap<>();
-                            parametros.put("id1",usuarios.get(itemView.getVerticalScrollbarPosition()).getId());
+                            parametros.put("id1",usuarios.get(getAdapterPosition()).getId());
                             parametros.put("id2",usrO.getId());
                             return parametros;
                         }
@@ -119,8 +119,8 @@ public class SolicitudesAdapter extends RecyclerView.Adapter<SolicitudesAdapter.
                         public void onResponse(String response) {
                             Log.d("SolEliminado",response);
                             if(response.equals("Eliminado")){
-                                usuarios.remove(itemView.getVerticalScrollbarPosition());
-                                notifyItemRemoved(itemView.getVerticalScrollbarPosition());
+                                usuarios.remove(getAdapterPosition());
+                                notifyItemRemoved(getAdapterPosition());
                             }
                         }
                     }, new Response.ErrorListener() {
@@ -132,7 +132,7 @@ public class SolicitudesAdapter extends RecyclerView.Adapter<SolicitudesAdapter.
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String,String> parametros = new HashMap<>();
-                            parametros.put("id1",usuarios.get(itemView.getVerticalScrollbarPosition()).getId());
+                            parametros.put("id1",usuarios.get(getAdapterPosition()).getId());
                             parametros.put("id2",usrO.getId());
                             return parametros;
                         }
