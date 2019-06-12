@@ -1,10 +1,6 @@
 package com.upm.agendame;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,32 +12,25 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.bumptech.glide.Glide;
+import com.android.volley.toolbox.StringRequest;
 import com.upm.agendame.Adapters.ImgFriendsAdapter;
 import com.upm.agendame.Entities.Eventos;
 import com.upm.agendame.Entities.Usuario;
 import com.upm.agendame.Entities.VolleySingleton;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class InfoEventoFijo extends AppCompatActivity{
     private Eventos evento;
@@ -59,7 +48,6 @@ public class InfoEventoFijo extends AppCompatActivity{
         usrO = new Usuario();
         usrO=(Usuario)getIntent().getExtras().getSerializable("usuario");
         evento=(Eventos)getIntent().getExtras().getSerializable("evento");
-        Toast.makeText(getApplicationContext(),evento.getNotas(),Toast.LENGTH_SHORT).show();
         usuarios= new ArrayList<>();
         friendsRecy=(RecyclerView)findViewById(R.id.recyFriendsEvent);
         LinearLayoutManager layoutManager
@@ -67,6 +55,13 @@ public class InfoEventoFijo extends AppCompatActivity{
         friendsRecy.setLayoutManager(layoutManager);
         cargarUsuarios(evento.getId());
 
+        ImageView eliminar_evento = (ImageView)findViewById(R.id.eliminar_evento);
+        eliminar_evento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteEvento();
+            }
+        });
 
         nombreEvento=(TextView)findViewById(R.id.nombreEvento);
         fechaEvento=(TextView)findViewById(R.id.fechaEvento);
@@ -98,6 +93,35 @@ public class InfoEventoFijo extends AppCompatActivity{
             }
         });
     }
+
+
+    private void deleteEvento(){
+        String url=getString(R.string.ip)+"DeleteEvento.php?";
+        Log.d("UrlElmEvento",url);
+            StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                    url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.d("EventoEliminado",response);
+                    finish();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d("ErrorDelete",error.getMessage());
+                }
+            }){
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String,String> parametros = new HashMap<>();
+                    parametros.put("id_usr",usrO.getId());
+                    parametros.put("id_evento",evento.getId());
+                    return parametros;
+                }
+            };
+            VolleySingleton.getInstanciaVolley(getApplicationContext()).addToRequestQueue(stringRequest);
+        }
+
 
     private void cargarUsuarios(String id){
         String url=getString(R.string.ip)+"GetUsuariosEvento.php?id="+id;
@@ -139,10 +163,16 @@ public class InfoEventoFijo extends AppCompatActivity{
     }
 
     @Override
+    public void finish(){
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("updateAdapter","updateAdapter");
+        setResult(RESULT_OK,returnIntent);
+        super.finish();
+    }
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                //NavUtils.navigateUpFromSameTask(this);
                 finish();
                 return true;
             default:

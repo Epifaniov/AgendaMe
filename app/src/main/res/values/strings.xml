@@ -1,9 +1,9 @@
 <resources>
 
     <!-- URL ACCESO WEBSERVICE -->
-    <!--string name="ip">http://192.168.56.1:8080/Agendame/</string-->
+    <string name="ip">http://192.168.56.1:8080/Agendame/</string>
     <!--string name="ip">https://agendameupm.000webhostapp.com/</string-->
-    <string name="ip">http://192.168.1.41/agendame/</string>
+    <!--string name="ip">http://192.168.1.41/agendame/</string-->
 
     <string name="app_name">AgendaMe</string>
     <string name="agenda">Agenda</string>

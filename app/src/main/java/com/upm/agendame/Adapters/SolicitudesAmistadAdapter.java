@@ -38,13 +38,11 @@ public class SolicitudesAmistadAdapter extends RecyclerView.Adapter<SolicitudesA
     private ArrayList<Usuario> usuarios;
     private Context context;
     private Usuario usrO;
-   // private RecyclerView recyclerView;
 
     public SolicitudesAmistadAdapter(ArrayList<Usuario> usuarios, Context context,Usuario usrO){//,RecyclerView recyclerView){
         this.usuarios=usuarios;
         this.context=context;
         this.usrO=usrO;
-       // this.recyclerView=recyclerView;
     }
     @NonNull
     @Override

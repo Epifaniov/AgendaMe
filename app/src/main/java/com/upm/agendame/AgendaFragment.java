@@ -29,29 +29,14 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 
 public class AgendaFragment extends Fragment {
-
-    /*
-    private String[] numberDays = { "17", "18", "19"};
-
-    private String[] weekDays = { "Mar", "Mié", "Jue"};
-    */
-
-
     private ArrayList<ArrayList<Eventos>> allEvents;
     private RecyclerView recyclerView;
     private Usuario usr;
@@ -67,9 +52,7 @@ public class AgendaFragment extends Fragment {
         usr=new Usuario();
         usr=(Usuario)getActivity().getIntent().getExtras().getSerializable("usuario");
         recyclerView=(RecyclerView) v.findViewById(R.id.recy_event);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        allEvents=new ArrayList<>();
-        //String ds="14/05/2019";
+
         Date fecha = new Date(System.currentTimeMillis());
         Log.d("LOG: ","No hay problema de parse "+fecha.toString());
         cargarDatos(usr,fecha);
@@ -86,6 +69,7 @@ public class AgendaFragment extends Fragment {
         final Animation mostrarMiniFab = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.mostrar_minifab_agenda);
         final Animation ocultarMiniFab = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.ocultar_minifab_agenda);
 
+        /*
         FloatingActionButton floatingActionButton = (FloatingActionButton) v.findViewById(R.id.fab_evento_fijo);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +82,7 @@ public class AgendaFragment extends Fragment {
                 Intent launcherActivityEventoFijo = new Intent(getActivity().getApplicationContext(),
                         EventoFijoActivity.class);
                 launcherActivityEventoFijo.putExtra("usr",usr);
-                startActivityForResult(launcherActivityEventoFijo,RES_COD_FIJO);
+                startActivity(launcherActivityEventoFijo);//,RES_COD_FIJO);
             }
         });
 
@@ -115,12 +99,12 @@ public class AgendaFragment extends Fragment {
                         EventoDinamico.class);
                 startActivity(launcherActivityEventoDinamico);
             }
-        });
+        });*/
 
         fabAgregarEvento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mEventoFijoLayout.getVisibility() == View.VISIBLE &&
+               /* if (mEventoFijoLayout.getVisibility() == View.VISIBLE &&
                         mEventoDinamicoLayout.getVisibility() == View.VISIBLE){
                     mEventoFijoLayout.setVisibility(View.GONE);
                     mEventoDinamicoLayout.setVisibility(View.GONE);
@@ -133,7 +117,11 @@ public class AgendaFragment extends Fragment {
                     mEventoFijoLayout.startAnimation(mostrarMiniFab);
                     mEventoDinamicoLayout.startAnimation(mostrarMiniFab);
                     fabAgregarEvento.startAnimation(mostrarFab);
-                }
+                }*/
+                Intent launcherActivityEventoFijo = new Intent(getActivity().getApplicationContext(),
+                        EventoFijoActivity.class);
+                launcherActivityEventoFijo.putExtra("usr",usr);
+                startActivityForResult(launcherActivityEventoFijo,RES_COD_FIJO);
             }
         });
 
@@ -142,12 +130,13 @@ public class AgendaFragment extends Fragment {
     }
 
     private void cargarDatos(Usuario usr,Date fecha){
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        allEvents=new ArrayList<>();
         Log.d("LOG: ","Entrada en el método de carga "+fecha.toString());
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String strDate = dateFormat.format(fecha);
         String passOK="";
         try {
-            //url=java.net.URLDecoder.encode(url, StandardCharsets.UTF_8.name());
             passOK=java.net.URLEncoder.encode(usr.getPassword(), StandardCharsets.UTF_8.name());
             Log.d("Pass: ",passOK);
         } catch (UnsupportedEncodingException e) {
@@ -194,9 +183,7 @@ public class AgendaFragment extends Fragment {
     }
 
     private void cargarListaDeListas(ArrayList<Eventos> lista){
-        //ArrayList<ArrayList<Eventos>> res = new ArrayList<>();
         DateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
-
         for(int i=0;i<lista.size();i++){
             String fechaExample = dt.format(new Date());
             Log.d("FechaEjemplo",fechaExample);
@@ -224,7 +211,7 @@ public class AgendaFragment extends Fragment {
             }
         }
 
-        EventsAdapter adapter = new EventsAdapter(allEvents,usr,getContext());
+        EventsAdapter adapter = new EventsAdapter(allEvents,usr,getContext(),this);
         recyclerView.setAdapter(adapter);
 
 
@@ -233,12 +220,15 @@ public class AgendaFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
-        if(requestCode == RES_COD_FIJO && resultCode == getActivity().RESULT_OK ){
-            //String ds="14/05/2019";
+        if(resultCode == getActivity().RESULT_OK ){
             SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
             Date fecha = new Date(System.currentTimeMillis());
             Log.d("LOG: ","No hay problema de parse "+format.format(fecha));
             cargarDatos(usr,fecha);
+            EventsAdapter adapter = new EventsAdapter(allEvents,usr,getContext(),this);
+            recyclerView.setAdapter(adapter);
+        }else{
+            Log.d("LOG: ","Error al volver");
         }
     }
 

@@ -3,6 +3,7 @@ package com.upm.agendame.Adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.upm.agendame.AgendaFragment;
 import com.upm.agendame.Entities.Eventos;
 import com.upm.agendame.Entities.Usuario;
 import com.upm.agendame.EventoFijoActivity;
@@ -24,10 +26,12 @@ public class EachEventAdapter extends RecyclerView.Adapter<EachEventAdapter.Each
     private ArrayList<Eventos> list;
     private Context context;
     private Usuario usrO;
-    public EachEventAdapter(ArrayList<Eventos> list, Usuario usrO, Context context){
+   private Fragment fragment;
+    public EachEventAdapter(ArrayList<Eventos> list, Usuario usrO, Context context, Fragment fragment){
         this.list=list;
         this.context=context;
         this.usrO=usrO;
+        this.fragment=fragment;
     }
     @NonNull
     @Override
@@ -59,7 +63,8 @@ public class EachEventAdapter extends RecyclerView.Adapter<EachEventAdapter.Each
                     Intent launcherActivityEditarRegistro = new Intent(context, InfoEventoFijo.class);
                     launcherActivityEditarRegistro.putExtra("usuario",usrO);
                     launcherActivityEditarRegistro.putExtra("evento", ev);
-                    context.startActivity(launcherActivityEditarRegistro);
+                    fragment.startActivityForResult(launcherActivityEditarRegistro,1);
+                    //context.startActivity(launcherActivityEditarRegistro);
                 }
             });
 

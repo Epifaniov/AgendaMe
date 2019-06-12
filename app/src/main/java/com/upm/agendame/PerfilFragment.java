@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.upm.agendame.Entities.Usuario;
@@ -30,8 +29,6 @@ public class PerfilFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_perfil, container, false);
         usr = new Usuario();
         usr=(Usuario) getActivity().getIntent().getExtras().getSerializable("usuario");
-        Toast.makeText(getContext(),usr.getNombre(),Toast.LENGTH_SHORT).show();
-        //img_bitmap = BitmapFactory.decodeByteArray(usr.getImagen(), 0, usr.getImagen().length);
         nombrePerfil=(TextView)v.findViewById(R.id.nombrePerfil);
         profile_img=(CircleImageView)v.findViewById(R.id.profile_image);
         email=(TextView)v.findViewById(R.id.correo_electronico_perfil);
@@ -40,7 +37,6 @@ public class PerfilFragment extends Fragment {
         num_citas=(TextView)v.findViewById(R.id.numero_citas);
 
         nombrePerfil.setText(usr.getNombre());
-        //profile_img.setImageBitmap(img_bitmap);
 
 
         Glide.with(getContext()).load(getString(R.string.ip)+usr.getRuta_img()).into(profile_img);
@@ -92,7 +88,6 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-        //return inflater.inflate(R.layout.fragment_perfil, container, false);
         return v;
     }
 }

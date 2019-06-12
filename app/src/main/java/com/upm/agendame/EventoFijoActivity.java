@@ -15,10 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -271,18 +269,10 @@ public class EventoFijoActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
             Log.d("RespuestaIDMsg",response);
-            //TODO response posee el id del mensaje insertado
+            //response posee el id del mensaje insertado
             postSolicitudesTOUsers(response);
-
-
             finish();
-                /*if(response.equals("eventos insertadorel_evento insertado")){
-                    Toast.makeText(getApplicationContext(),"Evento creado",Toast.LENGTH_SHORT).show();
-                    //TODO hacer el insert en la base de datos de los amigos a los que invitamos
-                    finish();
-                }else{
-                    Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
-                }*/
+
             }
         }, new Response.ErrorListener() {
             @Override

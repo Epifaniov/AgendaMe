@@ -2,6 +2,7 @@ package com.upm.agendame.Adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,11 +23,13 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsView
    private ArrayList<ArrayList<Eventos>>events;
    private Context context;
    private Usuario usrO;
+   private Fragment fragment;
 
-    public EventsAdapter(ArrayList<ArrayList<Eventos>> list, Usuario usrO, Context context){
+    public EventsAdapter(ArrayList<ArrayList<Eventos>> list, Usuario usrO, Context context,Fragment fragment){
         this.events=list;
         this.usrO=usrO;
         this.context=context;
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -40,7 +43,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsView
     public void onBindViewHolder(@NonNull EventsViewHolder eventsViewHolder, int i) {
         DateFormat day = new SimpleDateFormat("dd");
         eventsViewHolder.dia.setText(day.format(events.get(i).get(0).getFechaInicio()));
-        eventsViewHolder.adapter = new EachEventAdapter(events.get(i),usrO,context);
+        eventsViewHolder.adapter = new EachEventAdapter(events.get(i),usrO,context,fragment);
         eventsViewHolder.evListView.setAdapter(eventsViewHolder.adapter);
     }
 
