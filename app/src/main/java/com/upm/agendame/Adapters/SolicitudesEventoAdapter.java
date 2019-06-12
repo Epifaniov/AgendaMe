@@ -7,8 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewOutlineProvider;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -16,124 +14,127 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.upm.agendame.Entities.NotificacionEvento;
 import com.upm.agendame.Entities.Usuario;
 import com.upm.agendame.Entities.VolleySingleton;
 import com.upm.agendame.R;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class SolicitudesAdapter extends RecyclerView.Adapter<SolicitudesAdapter.SolicitudesViewHolder> {
-    private ArrayList<Usuario> usuarios;
+public class SolicitudesEventoAdapter extends RecyclerView.Adapter<SolicitudesEventoAdapter.SolicitudesViewHolder> {
+    private ArrayList<NotificacionEvento> notificaciones;
     private Context context;
     private Usuario usrO;
-   // private RecyclerView recyclerView;
 
-    public SolicitudesAdapter(ArrayList<Usuario> usuarios, Context context,Usuario usrO){//,RecyclerView recyclerView){
-        this.usuarios=usuarios;
+    public SolicitudesEventoAdapter(ArrayList<NotificacionEvento> notificaciones, Usuario usrO, Context context){
+        this.notificaciones=notificaciones;
         this.context=context;
-        this.usrO=usrO;
-       // this.recyclerView=recyclerView;
+        this.usrO = usrO;
     }
-    @NonNull
+
     @Override
     public SolicitudesViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.lista_solicitudes,null,false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_solicitudes_eventos,null,false);
         return new SolicitudesViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull SolicitudesViewHolder solicitudesViewHolder, int i) {
-        solicitudesViewHolder.nombre.setText(usuarios.get(i).getNombre());
-        Glide.with(context).load(context.getString(R.string.ip)+usuarios.get(i).getRuta_img())
+        Glide.with(context).load(context.getString(R.string.ip)+notificaciones.get(i).getImg_usr())
                 .into(solicitudesViewHolder.img);
+        solicitudesViewHolder.nombreUsr.setText(notificaciones.get(i).getNombreUsr());
+        solicitudesViewHolder.titulo.setText(notificaciones.get(i).getEvento());
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        String fechaInicio = dateFormat.format(notificaciones.get(i).getFechaInicio());
+        String fechaFin = dateFormat.format(notificaciones.get(i).getFechaFin());
+        solicitudesViewHolder.subtitulo.setText(fechaInicio +" - "+fechaFin);
     }
 
     @Override
     public int getItemCount() {
-        return usuarios.size();
+        return notificaciones.size();
     }
 
     public class SolicitudesViewHolder extends RecyclerView.ViewHolder {
+
         CircleImageView img;
-        TextView nombre;
+        TextView nombreUsr,titulo, subtitulo;
         ImageButton accept,delete;
-        public SolicitudesViewHolder(@NonNull final View itemView) {
+
+        public SolicitudesViewHolder(@NonNull View itemView) {
             super(itemView);
-            img=(CircleImageView) itemView.findViewById(R.id.imgReqFriend   );
-            nombre=(TextView)itemView.findViewById(R.id.list_texto);
-            accept=(ImageButton)itemView.findViewById(R.id.aceptar_solicitud);
-            delete=(ImageButton)itemView.findViewById(R.id.eliminar_solicitud);
+            img = (CircleImageView)itemView.findViewById(R.id.imgReqFriend);
+            nombreUsr = (TextView)itemView.findViewById(R.id.nombreUsr);
+            titulo = (TextView)itemView.findViewById(R.id.titulo_evento);
+            subtitulo = (TextView)itemView.findViewById(R.id.subtitulo_evento);
+            accept = (ImageButton) itemView.findViewById(R.id.aceptar_solicitud);
+            delete = (ImageButton)itemView.findViewById(R.id.eliminar_solicitud);
 
             accept.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    String url = context.getString(R.string.ip)+"InsertFriend.php?";
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                            url, new Response.Listener<String>() {
+                public void onClick(final View v) {
+                    String url = context.getString(R.string.ip)+"UpdateEventoToShared.php?";
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             Log.d("SolAceptado",response);
-                            if(response.equals("Amigo_Aceptado")){
-                                usuarios.remove(itemView.getVerticalScrollbarPosition());
-                                notifyItemRemoved(itemView.getVerticalScrollbarPosition());
+                            if(response.equals("Evento_add")){
+                                notificaciones.remove(getAdapterPosition());
+                                notifyDataSetChanged();
+                                //notifyItemRemoved(v.getVerticalScrollbarPosition());
                             }
                         }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.d("ErrorAccp",error.getMessage());
+
                         }
                     }){
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String,String> parametros = new HashMap<>();
-                            parametros.put("id1",usuarios.get(itemView.getVerticalScrollbarPosition()).getId());
-                            parametros.put("id2",usrO.getId());
+                            parametros.put("id_usr",usrO.getId());
+                            parametros.put("id_evento",notificaciones.get(getAdapterPosition()).getId_evento());
                             return parametros;
                         }
                     };
-
                     VolleySingleton.getInstanciaVolley(context).addToRequestQueue(stringRequest);
                 }
             });
 
+
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String url = context.getString(R.string.ip)+"DeleteFriend.php?";
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                            url, new Response.Listener<String>() {
+                    String url = context.getString(R.string.ip)+"DeleteSolicitudEvento.php?";
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             Log.d("SolEliminado",response);
                             if(response.equals("Eliminado")){
-                                usuarios.remove(itemView.getVerticalScrollbarPosition());
-                                notifyItemRemoved(itemView.getVerticalScrollbarPosition());
+                                notificaciones.remove(getAdapterPosition());
+                                notifyItemRemoved(getAdapterPosition());
                             }
                         }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.d("ErrorDelete",error.getMessage());
+
                         }
                     }){
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String,String> parametros = new HashMap<>();
-                            parametros.put("id1",usuarios.get(itemView.getVerticalScrollbarPosition()).getId());
-                            parametros.put("id2",usrO.getId());
+                            parametros.put("id_usr",usrO.getId());
+                            parametros.put("id_evento",notificaciones.get(getAdapterPosition()).getId_evento());
                             return parametros;
                         }
                     };
@@ -141,6 +142,8 @@ public class SolicitudesAdapter extends RecyclerView.Adapter<SolicitudesAdapter.
                 }
             });
         }
+
+
 
     }
 }

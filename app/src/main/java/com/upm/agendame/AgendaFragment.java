@@ -224,7 +224,7 @@ public class AgendaFragment extends Fragment {
             }
         }
 
-        EventsAdapter adapter = new EventsAdapter(allEvents,getContext());
+        EventsAdapter adapter = new EventsAdapter(allEvents,usr,getContext());
         recyclerView.setAdapter(adapter);
 
 

@@ -7,15 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.upm.agendame.Adapters.SolicitudesAdapter;
+import com.upm.agendame.Adapters.SolicitudesAmistadAdapter;
 import com.upm.agendame.Entities.Usuario;
 import com.upm.agendame.Entities.VolleySingleton;
 
@@ -24,8 +21,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class Solicitudes extends AppCompatActivity {
 
@@ -71,7 +66,7 @@ public class Solicitudes extends AppCompatActivity {
                         usr.setNombre(jsonObject.optString("NOMBRE"));
                         usuarios.add(usr);
                     }
-                    SolicitudesAdapter adapter = new SolicitudesAdapter(usuarios,getApplicationContext(),usrO);//,recyclerView);
+                    SolicitudesAmistadAdapter adapter = new SolicitudesAmistadAdapter(usuarios,getApplicationContext(),usrO);//,recyclerView);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {

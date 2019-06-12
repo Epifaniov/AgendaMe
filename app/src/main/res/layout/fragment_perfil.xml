@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -66,6 +67,10 @@
         </LinearLayout>
     </LinearLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -211,17 +216,31 @@
             android:layout_below="@id/telefono_perfil"/>
 
         <Button
+            android:id="@+id/sol_inv"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_below="@+id/solicitudes"
+            android:layout_marginLeft="115dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="115dp"
+            android:background="@drawable/boton_perfil"
+            android:text="@string/solicitudes_eventos"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <Button
             android:id="@+id/solicitudes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_below="@id/numero_telefono"
             android:layout_marginLeft="115dp"
+            android:layout_marginTop="19dp"
             android:layout_marginRight="115dp"
             android:background="@drawable/boton_perfil"
             android:text="@string/solicitudes_amistad"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:layout_below="@id/numero_telefono"/>
+            android:textSize="20sp" />
 
     </RelativeLayout>
+    </ScrollView>
 </LinearLayout>

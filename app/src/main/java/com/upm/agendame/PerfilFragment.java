@@ -1,8 +1,6 @@
 package com.upm.agendame;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,8 +14,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.upm.agendame.Entities.Usuario;
-
-import java.net.URL;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -79,6 +75,18 @@ public class PerfilFragment extends Fragment {
             public void onClick(View v) {
                 Intent launcherActivitySolicitudes = new Intent(getActivity().getApplicationContext(),
                         Solicitudes.class);
+                launcherActivitySolicitudes.putExtra("usuario",usr);
+                startActivity(launcherActivitySolicitudes);
+            }
+        });
+
+
+        Button sol_inv = v.findViewById(R.id.sol_inv);
+        sol_inv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent launcherActivitySolicitudes = new Intent(getActivity().getApplicationContext(),
+                        SolicitudesEventos.class);
                 launcherActivitySolicitudes.putExtra("usuario",usr);
                 startActivity(launcherActivitySolicitudes);
             }

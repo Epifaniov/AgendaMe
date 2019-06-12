@@ -48,14 +48,16 @@ public class InfoEventoFijo extends AppCompatActivity{
     private ArrayList<Usuario> usuarios;
     private JsonObjectRequest jsonObjectRequest;
     private TextView nombreEvento, fechaEvento;
-    private Usuario usr;
     private RecyclerView friendsRecy;
+    private Usuario usrO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.info_evento_fijo_recycler);
         evento = new Eventos();
+        usrO = new Usuario();
+        usrO=(Usuario)getIntent().getExtras().getSerializable("usuario");
         evento=(Eventos)getIntent().getExtras().getSerializable("evento");
         Toast.makeText(getApplicationContext(),evento.getNotas(),Toast.LENGTH_SHORT).show();
         usuarios= new ArrayList<>();
@@ -89,6 +91,9 @@ public class InfoEventoFijo extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent launcherActivityEditarEvento = new Intent(getApplicationContext(), EventoFijoActivity.class);
+                launcherActivityEditarEvento.putExtra("usr",usrO);
+                launcherActivityEditarEvento.putExtra("evento",evento);
+                launcherActivityEditarEvento.putExtra("amigos",usuarios);
                 startActivity(launcherActivityEditarEvento);
             }
         });
@@ -103,8 +108,9 @@ public class InfoEventoFijo extends AppCompatActivity{
 
                 try {
                         for (int i = 0; i < json.length(); i++) {
-                        usr = new Usuario();
-                        final JSONObject jsonObject = json.getJSONObject(i);
+
+                            Usuario usr = new Usuario();
+                        JSONObject jsonObject = json.getJSONObject(i);
                         usr.setId(jsonObject.optString("ID"));
                         usr.setNombre(jsonObject.optString("NOMBRE"));
                         usr.setPassword(jsonObject.optString("PASSWORD"));
@@ -132,32 +138,6 @@ public class InfoEventoFijo extends AppCompatActivity{
         VolleySingleton.getInstanciaVolley(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
 
-    /*private void getImgFromURL(String path){
-        String url=getString(R.string.ip)+path;
-        url=url.replace(" ","%20");
-        ImageRequest imageRequest = new ImageRequest(url, new Response.Listener<Bitmap>() {
-            @Override
-            public void onResponse(Bitmap response) {
-                ByteArrayOutputStream bStream = new ByteArrayOutputStream();
-                response.compress(Bitmap.CompressFormat.PNG, 100, bStream);
-                byte[] byteArray = bStream.toByteArray();
-
-                usr.setImagen(byteArray);
-                usuarios.add(usr);
-
-                ImgFriendsAdapter adapter=new ImgFriendsAdapter(usuarios,getApplicationContext());
-                friendsRecy.setAdapter(adapter);
-                Log.d("IMG_REQ: ",usr.getNombre());
-            }
-        }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-        VolleySingleton.getInstanciaVolley(getApplicationContext()).addToRequestQueue(imageRequest);
-    }
-*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

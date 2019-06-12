@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.upm.agendame.Entities.Eventos;
+import com.upm.agendame.Entities.Usuario;
 import com.upm.agendame.EventoFijoActivity;
 import com.upm.agendame.InfoEventoFijo;
 import com.upm.agendame.PantallaPrincipal;
@@ -20,11 +21,13 @@ import java.util.ArrayList;
 
 public class EachEventAdapter extends RecyclerView.Adapter<EachEventAdapter.EachEVViewHolder> {
 
-    ArrayList<Eventos> list;
-    Context context;
-    public EachEventAdapter(ArrayList<Eventos> list, Context context){
+    private ArrayList<Eventos> list;
+    private Context context;
+    private Usuario usrO;
+    public EachEventAdapter(ArrayList<Eventos> list, Usuario usrO, Context context){
         this.list=list;
         this.context=context;
+        this.usrO=usrO;
     }
     @NonNull
     @Override
@@ -54,6 +57,7 @@ public class EachEventAdapter extends RecyclerView.Adapter<EachEventAdapter.Each
                 @Override
                 public void onClick(View v) {
                     Intent launcherActivityEditarRegistro = new Intent(context, InfoEventoFijo.class);
+                    launcherActivityEditarRegistro.putExtra("usuario",usrO);
                     launcherActivityEditarRegistro.putExtra("evento", ev);
                     context.startActivity(launcherActivityEditarRegistro);
                 }

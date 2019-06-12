@@ -26,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.upm.agendame.Adapters.SearchUsrEventFijoAdapter;
+import com.upm.agendame.Entities.Eventos;
 import com.upm.agendame.Entities.Usuario;
 import com.upm.agendame.Entities.VolleySingleton;
 
@@ -54,6 +55,8 @@ public class EventoFijoActivity extends AppCompatActivity {
     private final int FR_CODE=2;
     private ArrayList<Usuario> users;
     private SearchUsrEventFijoAdapter adapter;
+    private Eventos evento;
+    private ArrayList<Usuario> amigos;
 
 
     @Override
@@ -66,6 +69,8 @@ public class EventoFijoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Evento Fijo");
         usrO=(Usuario) getIntent().getExtras().getSerializable("usr");
+
+
         users = new ArrayList<>();
         recyFriendEvFijo=(RecyclerView)findViewById(R.id.recyFriendEvFijo);
         recyFriendEvFijo.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
@@ -104,7 +109,13 @@ public class EventoFijoActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
+        if((Eventos)getIntent().getExtras().getSerializable("evento") != null){
+            evento=new Eventos();
+            amigos=new ArrayList<>();
+            evento=(Eventos)getIntent().getExtras().getSerializable("evento");
+            amigos=(ArrayList<Usuario>)getIntent().getExtras().getSerializable("amigos");
+            cargarDatosEvento();
+        }
         agregar_amigos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,11 +199,60 @@ public class EventoFijoActivity extends AppCompatActivity {
         btGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                insertEvento();
+                if(evento!=null){
+                    //TODO update evento
+
+                }else {
+                    insertEvento();
+                }
             }
         });
 
     }
+
+
+    private void cargarDatosEvento(){
+
+        DateFormat dayNamForm= new SimpleDateFormat("E");
+        DateFormat dayForm= new SimpleDateFormat("dd");
+        DateFormat montNamForm = new SimpleDateFormat("MMMM");
+        DateFormat yearForm= new SimpleDateFormat("yyyy");
+
+        datePickerFijo.setText(dayNamForm.format(evento.getFechaInicio())+", "
+                +dayForm.format(evento.getFechaInicio())+" de "+montNamForm.format(evento.getFechaInicio())
+                +" de "+yearForm.format(evento.getFechaInicio()));
+
+        nomFijoEd.setText(evento.getNombre());
+        ubicacionEd.setText(evento.getUbicacion());
+
+
+        DateFormat hourOfDayF= new SimpleDateFormat("HH");
+        DateFormat minuteF= new SimpleDateFormat("mm");
+        int hourOfDay = Integer.valueOf(hourOfDayF.format(evento.getFechaInicio()));
+        int minute = Integer.valueOf(minuteF.format(evento.getFechaInicio()));
+        Log.d("Fecha1",String.valueOf(hourOfDay));
+        if(hourOfDay<10)hour2="0"+String.valueOf(hourOfDay);
+        else hour2=String.valueOf(hourOfDay);
+        if(minute<10) minute2="0"+String.valueOf(minute);
+        else minute2=String.valueOf(minute);
+        hInicioEd.setText(hour2+":"+minute2);
+
+        Log.d("Fecha2",evento.getFechaFin().toString());
+        int hourOfDay2 = Integer.valueOf(hourOfDayF.format(evento.getFechaFin()));
+        int minuteF2 = Integer.valueOf(minuteF.format(evento.getFechaFin()));
+        if(hourOfDay2<10)hour2="0"+String.valueOf(hourOfDay2);
+        else hour2=String.valueOf(hourOfDay);
+        if(minuteF2<10) minute2="0"+String.valueOf(minuteF2);
+        else minute2=String.valueOf(minuteF2);
+        hFinEd.setText(hour2+":"+minute2);
+
+        adapter =new SearchUsrEventFijoAdapter(amigos,getApplicationContext(),usrO);
+        recyFriendEvFijo.setAdapter(adapter);
+
+
+    }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         super.onActivityResult(requestCode, resultCode, data);
@@ -212,6 +272,9 @@ public class EventoFijoActivity extends AppCompatActivity {
             public void onResponse(String response) {
             Log.d("RespuestaIDMsg",response);
             //TODO response posee el id del mensaje insertado
+            postSolicitudesTOUsers(response);
+
+
             finish();
                 /*if(response.equals("eventos insertadorel_evento insertado")){
                     Toast.makeText(getApplicationContext(),"Evento creado",Toast.LENGTH_SHORT).show();
@@ -243,6 +306,38 @@ public class EventoFijoActivity extends AppCompatActivity {
             }
         };
         VolleySingleton.getInstanciaVolley(getApplicationContext()).addToRequestQueue(stringRequest);
+
+    }
+
+
+    private void postSolicitudesTOUsers(final String idEvento){
+        String url = getString(R.string.ip)+"InsertSolicitudesUsr.php";
+
+        for(final Usuario usr : users){
+
+            stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.d("ErrorSolicitud",response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d("ErrorSolicitud",error.toString());
+                }
+            }){
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String,String> parametros = new HashMap<>();
+                    parametros.put("id_usr",usr.getId());
+                    parametros.put("id_evento",idEvento);
+                    return parametros;
+                }
+            };
+            VolleySingleton.getInstanciaVolley(getApplicationContext()).addToRequestQueue(stringRequest);
+
+        }
+
 
     }
 

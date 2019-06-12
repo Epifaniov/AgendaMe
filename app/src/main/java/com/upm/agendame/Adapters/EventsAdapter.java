@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.upm.agendame.Entities.Eventos;
+import com.upm.agendame.Entities.Usuario;
 import com.upm.agendame.R;
 
 import java.text.DateFormat;
@@ -18,10 +19,13 @@ import java.util.ArrayList;
 
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsViewHolder> {
 
-    ArrayList<ArrayList<Eventos>>events;
-    Context context;
-    public EventsAdapter(ArrayList<ArrayList<Eventos>> list, Context context){
+   private ArrayList<ArrayList<Eventos>>events;
+   private Context context;
+   private Usuario usrO;
+
+    public EventsAdapter(ArrayList<ArrayList<Eventos>> list, Usuario usrO, Context context){
         this.events=list;
+        this.usrO=usrO;
         this.context=context;
     }
 
@@ -36,7 +40,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventsView
     public void onBindViewHolder(@NonNull EventsViewHolder eventsViewHolder, int i) {
         DateFormat day = new SimpleDateFormat("dd");
         eventsViewHolder.dia.setText(day.format(events.get(i).get(0).getFechaInicio()));
-        eventsViewHolder.adapter = new EachEventAdapter(events.get(i),context);
+        eventsViewHolder.adapter = new EachEventAdapter(events.get(i),usrO,context);
         eventsViewHolder.evListView.setAdapter(eventsViewHolder.adapter);
     }
 
